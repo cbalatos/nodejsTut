@@ -1,5 +1,9 @@
-var app = require('express')(); // an express framework application
+var express = require('express');
+var app = express(); // an express framework application
 var http = require('http').Server(app);
+
+//make express application to use installed jquery ****
+app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 
 //Socket.IO is composed of two parts:
 //
@@ -21,6 +25,9 @@ app.get('/', function(req, res){
 //Listen on the connection event for incoming sockets, and log it to the console.
 io.on('connection', function(socket){
   console.log('a user connected');
+  socket.on('chat message', function(msg){
+    console.log('message: ' + msg);
+  });
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });  
