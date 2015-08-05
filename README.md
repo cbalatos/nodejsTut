@@ -16,7 +16,7 @@ From the chat-example directory, you can use:
 npm install
 ```
 
-to download all project dependencies into node_modules directory. The you can start ther server using:
+to download all project dependencies into node_modules directory. Then you can start ther server using:
 ```
 node index.js
 ```
