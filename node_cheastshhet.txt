@@ -5,3 +5,4 @@ run a node server: node <filename>.js
 NPM
 ---------------------------
 automatic depencies population: npm install --save express@4.10.2
+download and install a local copy of already defined dependencies: npm install
