@@ -1,6 +1,6 @@
 var http = require('http');
 
-var main = require('./main');
+var main = require('./main'); //load local files
 
 var server = http.createServer(function(req, res) {
 	var data = '';
