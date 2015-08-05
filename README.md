@@ -21,4 +21,6 @@ to download all project dependencies into node_modules directory. The you can st
 node index.js
 '''
 
+
+Navigate to http://localhost:3000/ from multiple browsers and/or tabs and check the applications functionality
  
