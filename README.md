@@ -1,6 +1,7 @@
 ## A node.js testbed
 This is a project that serves s a testbed for my node.js demo applications. It currently contains two projects
-1. a vary basic 'Hello World' node.js application server. 
+1. a basic 'Hello World' node.js application server. 
+
 2. a chat server that demonstrates basic express and socket.io usage.
 
 #### Prerequisites
