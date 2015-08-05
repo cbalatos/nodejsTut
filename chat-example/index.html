@@ -18,12 +18,20 @@
 	<script>
 	  // define a socket variable and connect to server, since io() does not define a url it will connect to the current server
 	  var socket = io();
+
+	  //Listen for an event on the socket
+	  socket.on('chat message', function(msg){
+	      $('#messages').append($('<li>').text(msg));
+  	  });
 	  $(function(){
 		  $('form').submit(function(){
+		  	  //emit a message to socket via an event named 'chat message', the server must listen to that event
 			  socket.emit('chat message', $('#m').val());
 			  $('#m').val('');
 			  return false;
 		  });
+
+
   	  });
 	</script>
   </head>
