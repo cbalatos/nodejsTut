@@ -30,6 +30,11 @@ io.on('connection', function(socket){
     //Broadcast the message to everybody
     io.emit('chat message', msg);
   });
+  socket.on('writing message', function(msg){
+    console.log('writing message: ' + msg);
+    //Broadcast the message to everybody
+    io.emit('writing message', msg);
+  });  
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });  
