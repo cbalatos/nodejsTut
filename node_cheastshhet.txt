@@ -2,7 +2,7 @@ Node
 ---------------------------
 run a node server: node <filename>.js
 
-NPM
+NPM 
 ---------------------------
 create a new package.json for your application:  npm init
 automatic depencies population: npm install --save express@4.10.2
