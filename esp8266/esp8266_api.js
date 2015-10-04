@@ -5,19 +5,30 @@ var cookieParser = require('cookie-parser'); // the session is stored in a cooki
 var bodyParser   = require("body-parser");  //midleware neeeded by express in order to support post requests
 var parseString  = require('xml2js').parseString ;
 var request = require('request');
+var io = require('socket.io')(http);
 
 //make express application to use installed jquery ****
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 //Here we are configuring express to use body-parser as middle-ware.
 app.use(bodyParser.urlencoded({ extended: false }));
 
-//Socket.IO is composed of two parts:
-//
-//    A server that integrates with (or mounts on) the Node.JS HTTP Server: socket.io
-//    A client library that loads on the browser side: socket.io-client
-
 //Integrate socket.io to the appication server
 var io = require('socket.io')(http);
+
+//the web socket part
+//Listen on the connection event for incoming sockets, and log it to the console.
+io.on('connection', function(socket){
+  console.log('a user connected');
+  socket.on('keypressed message', function(msg){
+    console.log('the key was pressed ' + msg);
+    //Broadcast the message to everybody
+    io.emit('keypressed message', msg);
+  });
+
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });  
+});
 
 var espSatusVar = 0;
 app.get('/', function(req, res){
@@ -29,6 +40,13 @@ app.get('/', function(req, res){
 
 app.get('/espStatus', function(req, res) {
     res.send( {status:espSatusVar});
+});
+
+app.get('/buttonIsPressed', function(req, res) {
+    now = new Date();
+    console.log("someone pressed the button at "+ now);
+     io.emit('keypressed message', "someone pressed the button at " + now);
+     res.send( {status:espSatusVar});  
 });
 
 app.post('/changeEspStatus',function(req,res){
