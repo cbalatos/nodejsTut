@@ -63,8 +63,12 @@ app.get('/changeEspStatus',function(req,res){
   res.end("ok new status defined  " + espSatusVar);
 });
 
+//import other modules
 var webClient = require('./routes/webClient');
 app.get('/webClient', webClient.webClient);
+
+var lanScanner = require('./routes/lanScanner');
+app.get('/lanScanner', lanScanner.lanScanner);
 
 //Listen on the connection event for incoming sockets, and log it to the console.
 io.on('connection', function(socket){
