@@ -9,6 +9,7 @@ var io = require('socket.io')(http);
 
 //make express application to use installed jquery ****
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
+app.use('/ajax-cross-origin', express.static(__dirname + '/node_modules/ajax-cross-origin/'));
 //Here we are configuring express to use body-parser as middle-ware.
 app.use(bodyParser.urlencoded({ extended: false }));
 
